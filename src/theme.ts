@@ -16,9 +16,22 @@ export default {
     heading: 1.125,
   },
   colors: {
+    // @see https://theme-ui.com/theming#colors
+    // text	Body foreground color
+    // background	Body background color
+    // primary	Primary brand color for links, buttons, etc.
+    // secondary	A secondary brand color for alternative styling
+    // accent	A contrast color for emphasizing UI
+    // highlight	A background color for highlighting text
+    // muted	A faint color for backgrounds, borders, and accents that do not require high contrast with the background color
     background: '#F8F8F8',
     icon: '#BCBCBC',
+    muted: '#BCBCBC',
+    accent: '#0E80F1',
+    highlight: '#0E80F1',
+    secondary: '#0E80F1',
     interaction: '#0E80F1',
+    primary: '#21272A',
     text: '#21272A',
     white: '#FFFFFF',
   },
