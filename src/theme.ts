@@ -1,7 +1,11 @@
-const theme = {
+import { Theme } from 'theme-ui'
+
+const makeTheme = <T extends Theme>(t: T) => t
+
+const theme = makeTheme({
   space: [0, 4, 8, 16, 32, 64, 128, 256, 512],
   fonts: {
-    body: 'Poppins, system-ui, -apple-system, sans-serif',
+    body: '"Poppins", system-ui, -apple-system, sans-serif',
     heading: 'inherit',
     monospace: 'Menlo, monospace',
   },
@@ -16,14 +20,6 @@ const theme = {
     heading: 1.125,
   },
   colors: {
-    // @see https://theme-ui.com/theming#colors
-    // text	Body foreground color
-    // background	Body background color
-    // primary	Primary brand color for links, buttons, etc.
-    // secondary	A secondary brand color for alternative styling
-    // accent	A contrast color for emphasizing UI
-    // highlight	A background color for highlighting text
-    // muted	A faint color for backgrounds, borders, and accents that do not require high contrast with the background color
     background: '#F8F8F8',
     icon: '#BCBCBC',
     muted: '#BCBCBC',
@@ -120,6 +116,6 @@ const theme = {
       maxWidth: '100%',
     },
   },
-}
+})
 
 export default theme
