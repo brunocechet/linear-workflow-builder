@@ -1,14 +1,12 @@
 import React from 'react'
-import styled from '@emotion/styled'
+import { Container } from 'theme-ui'
 
 import Routes from './Routes'
 
-const AppContainer = styled.div()
-
 const App = () => (
-  <AppContainer>
+  <Container>
     <Routes />
-  </AppContainer>
+  </Container>
 )
 
 export default App
