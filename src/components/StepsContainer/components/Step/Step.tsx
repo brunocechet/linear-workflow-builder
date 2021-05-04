@@ -15,19 +15,23 @@ import {
 
 import { Box } from 'theme-ui'
 
+import Title from './components/Title'
+import Description from './components/Description'
 import theme from '../../../../theme'
 
 type StepState = 'normal' | 'active' | 'hover'
 
-type StepProps = {
+export type StepProps = {
   state?: StepState
+  title: string
+  description: string
 } & BackgroundColorProps &
   BorderProps &
   ShadowProps &
   SpaceProps &
   React.HTMLAttributes<HTMLLIElement>
 
-const StepBase = styled.li<StepProps>`
+const StepBase = styled.li<Omit<StepProps, 'title' | 'description'>>`
   align-items: flex-start;
   border: 2px solid;
   display: flex;
@@ -88,7 +92,7 @@ const StepBase = styled.li<StepProps>`
   })}
 `
 
-const Step: React.FC<StepProps> = ({ state, children, ...rest }) => (
+const Step: React.FC<StepProps> = ({ state, title, description, ...rest }) => (
   <StepBase
     state={state}
     bg="white"
@@ -98,7 +102,10 @@ const Step: React.FC<StepProps> = ({ state, children, ...rest }) => (
     p={4}
     {...rest}
   >
-    <Box ml={2}>{children}</Box>
+    <Box ml={2}>
+      <Title>{title}</Title>
+      <Description>{description}</Description>
+    </Box>
   </StepBase>
 )
 
