@@ -1,5 +1,8 @@
 # Linear Workflow Builder
 
+This project is powered by [Emotion](https://emotion.sh/docs/introduction), [Theme-ui](https://theme-ui.com/theming/#body-styles),
+and [styled-sytem](https://styled-system.com/api) libraries. These libraries complement each other.
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
