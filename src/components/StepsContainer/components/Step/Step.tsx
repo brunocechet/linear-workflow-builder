@@ -15,7 +15,7 @@ import {
 
 import { Box } from 'theme-ui'
 
-import theme from '../../theme'
+import theme from '../../../../theme'
 
 type StepState = 'normal' | 'active' | 'hover'
 

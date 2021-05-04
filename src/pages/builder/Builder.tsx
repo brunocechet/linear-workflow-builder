@@ -1,9 +1,9 @@
 import React from 'react'
 
 import StepsContainer from '../../components/StepsContainer'
-import Step from '../../components/Step'
-import Title from '../../components/Step/components/Title'
-import Description from '../../components/Step/components/Description'
+import Step from '../../components/StepsContainer/components/Step'
+import Title from '../../components/StepsContainer/components/Step/components/Title'
+import Description from '../../components/StepsContainer/components/Step/components/Description'
 
 const Builder: React.FC = () => {
   return (
