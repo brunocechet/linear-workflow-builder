@@ -23,7 +23,8 @@ import Title from "./components/Title";
 import Description from "./components/Description";
 import theme from "../../../../theme";
 
-const getBorderColor = (isDragging: boolean) => isDragging ? theme.colors.accent : theme.colors.white;
+const getBorderColor = (isDragging: boolean) =>
+  isDragging ? theme.colors.accent : theme.colors.white;
 
 const StepInnerContainer = styled.li<IStepInnerContainer>`
   align-items: flex-start;
@@ -90,8 +91,8 @@ const Step: React.FC<IStep> = ({ id, title, description, index }) => (
         {...provided.dragHandleProps}
       >
         <Box ml={2}>
-          <Title>{title}</Title>
-          <Description>{description}</Description>
+          {title && <Title>{title}</Title>}
+          {description && <Description>{description}</Description>}
         </Box>
       </StepInnerContainer>
     )}
