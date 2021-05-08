@@ -9,6 +9,7 @@ import {
 } from "react-beautiful-dnd";
 
 import Step, { IStep } from "./components/Step";
+import AddNewStep, { IAddNewStep } from "../AddNewStep";
 
 const StepsContainerBase = styled.ul<IStepsContainerBase>`
   list-style: none;
@@ -17,7 +18,10 @@ const StepsContainerBase = styled.ul<IStepsContainerBase>`
   ${space};
 `;
 
-const StepsContainer: React.FC<IStepsContainer> = ({ steps }) => (
+const StepsContainer: React.FC<IStepsContainer> = ({
+  steps,
+  handleCreateNewStep,
+}) => (
   <Droppable droppableId="workflow">
     {(provided: DroppableProvided) => (
       <>
@@ -37,13 +41,16 @@ const StepsContainer: React.FC<IStepsContainer> = ({ steps }) => (
             );
           })}
         </StepsContainerBase>
+        <AddNewStep handleCreateNewStep={handleCreateNewStep} />
         {provided.placeholder}
       </>
     )}
   </Droppable>
 );
 
-interface IStepsContainer extends React.HTMLAttributes<HTMLUListElement> {
+interface IStepsContainer
+  extends IAddNewStep,
+    React.HTMLAttributes<HTMLUListElement> {
   steps: IStep[];
 }
 
