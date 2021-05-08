@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "@emotion/styled";
-import { Button, Input, Label, Textarea } from "theme-ui";
+import { Button, Divider, Input, Label, Textarea } from "theme-ui";
 
 import {
   BackgroundColorProps,
@@ -32,6 +32,8 @@ const AddNewStep: React.FC<IAddNewStep> = ({ handleCreateNewStep }) => {
   return (
     <AddStepInnerContainer borderRadius={3} boxShadow="medium" my={5} p={4}>
       <form onSubmit={handleCreateNewStep}>
+        <legend>Create a new step</legend>
+        <Divider />
         <Label htmlFor="title">Title</Label>
         <Input
           id="title"

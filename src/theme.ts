@@ -173,6 +173,9 @@ const theme = makeTheme({
       p: 0,
       m: 0,
     },
+    hr : {
+      color: t => t.colors?.muted
+    },
   },
 });
 
