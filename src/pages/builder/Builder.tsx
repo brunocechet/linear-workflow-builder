@@ -1,29 +1,26 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { DragDropContext, DropResult } from "react-beautiful-dnd";
 import { nanoid } from "nanoid";
+import { useLocalStorage } from "react-use";
 
 import StepsContainer from "../../components/StepsContainer";
 import TrashBin from "../../components/TrashBin";
+import { IStep } from "../../components/StepsContainer/components/Step";
 import { extractValueFromEvent } from "./utils";
 
-const TEMP_MOCK = Array(6)
-  .fill({})
-  .map((_, index) => {
-    const id = nanoid();
-    return {
-      title: `Title for ${id}`,
-      description: `Description for ${id}`,
-      id,
-      index,
-    };
-  });
+const LOCAL_STORAGE_ID = "workflow-builder";
 
 const Builder: React.FC = () => {
-  const [steps, setSteps] = useState(TEMP_MOCK);
+  const [lsValue, setLsValue] = useLocalStorage<IStep[]>(LOCAL_STORAGE_ID, []);
+  const [steps, setSteps] = useState<IStep[]>(lsValue ?? []);
+
+  useEffect(() => {
+    setLsValue(steps);
+  }, [steps, setLsValue]);
 
   const handleOnDragEnd = (result: DropResult) => {
-    // dropped outside the list
-    if (!result.destination) {
+    // dropped outside the list or list is empty
+    if (!result.destination || !steps.length) {
       return;
     }
 
@@ -49,7 +46,9 @@ const Builder: React.FC = () => {
     const title = extractValueFromEvent(event, "title");
     const description = extractValueFromEvent(event, "description");
 
-    const maxStepIndex = Math.max(...steps.map((item) => item.index));
+    const maxStepIndex = Math.max(
+      ...[0].concat(steps.map((item) => item.index))
+    );
 
     const newStep = {
       title,
