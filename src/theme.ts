@@ -47,6 +47,26 @@ const theme = makeTheme({
       maxHeight: 300,
     }
   },
+  forms: {
+    label: {
+      fontSize: 1,
+      fontWeight: 'semibold',
+    },
+    input: {
+      borderColor: 'primary',
+      '&:focus': {
+        borderColor: 'interaction',
+        outline: 'none',
+      },
+    },
+    textarea: {
+      borderColor: 'primary',
+      '&:focus': {
+        borderColor: 'interaction',
+        outline: 'none',
+      },
+    },
+  },
   images: {
     small: {
       height: 150,
