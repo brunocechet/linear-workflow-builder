@@ -1,14 +1,14 @@
-import React from 'react'
+import React from "react";
 
 import {
   BrowserRouter as Router,
   Redirect,
   Route,
   Switch,
-} from 'react-router-dom'
+} from "react-router-dom";
 
-import Home from './pages/home'
-import Builder from './pages/builder'
+import Home from "./pages/home";
+import Builder from "./pages/builder";
 
 const Routes = () => (
   <Router>
@@ -24,6 +24,6 @@ const Routes = () => (
       </Route>
     </Switch>
   </Router>
-)
+);
 
-export default Routes
+export default Routes;

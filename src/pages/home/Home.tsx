@@ -1,7 +1,7 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React from "react";
+import { Link } from "react-router-dom";
 
-import { ReactComponent as HeaderImage } from './images/undraw_online_connection_6778.svg'
+import { ReactComponent as HeaderImage } from "./images/undraw_online_connection_6778.svg";
 
 const Home = () => {
   return (
@@ -10,7 +10,7 @@ const Home = () => {
       <h1>Welcome to Workflow Builder!</h1>
       <Link to="/builder">Click here to build your Workflow!</Link>
     </>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;

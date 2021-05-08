@@ -1,12 +1,12 @@
-import React from 'react'
-import { Container } from 'theme-ui'
+import React from "react";
+import { Container } from "theme-ui";
 
-import Routes from './Routes'
+import Routes from "./Routes";
 
 const App = () => (
   <Container>
     <Routes />
   </Container>
-)
+);
 
-export default App
+export default App;

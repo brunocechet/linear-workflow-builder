@@ -1,13 +1,13 @@
-import { Theme } from 'theme-ui'
+import { Theme } from "theme-ui";
 
-const makeTheme = <T extends Theme>(t: T) => t
+const makeTheme = <T extends Theme>(t: T) => t;
 
 const theme = makeTheme({
   space: [0, 4, 8, 16, 24, 32, 64, 128, 256, 512],
   fonts: {
     body: '"Poppins", system-ui, -apple-system, sans-serif',
-    heading: 'inherit',
-    monospace: 'Menlo, monospace',
+    heading: "inherit",
+    monospace: "Menlo, monospace",
   },
   fontSizes: [12, 14, 16, 20, 24, 32, 48, 64, 96],
   fontWeights: {
@@ -21,16 +21,16 @@ const theme = makeTheme({
     heading: 1.125,
   },
   colors: {
-    accent: '#0E80F1',
-    background: '#F8F8F8',
-    highlight: '#0E80F1',
-    icon: '#BCBCBC',
-    interaction: '#0E80F1',
-    muted: '#BCBCBC',
-    primary: '#21272A',
-    secondary: '#0E80F1',
-    text: '#21272A',
-    white: '#FFFFFF',
+    accent: "#0E80F1",
+    background: "#F8F8F8",
+    highlight: "#0E80F1",
+    icon: "#BCBCBC",
+    interaction: "#0E80F1",
+    muted: "#BCBCBC",
+    primary: "#21272A",
+    secondary: "#0E80F1",
+    text: "#21272A",
+    white: "#FFFFFF",
   },
   sizes: {
     container: {
@@ -42,103 +42,103 @@ const theme = makeTheme({
     borderRadius: 1,
   },
   shadows: {
-    medium: '0 8px 32px rgba(0, 0, 0, .16)',
+    medium: "0 8px 32px rgba(0, 0, 0, .16)",
   },
   styles: {
     root: {
-      fontFamily: 'body',
-      lineHeight: 'body',
-      fontWeight: 'body',
+      fontFamily: "body",
+      lineHeight: "body",
+      fontWeight: "body",
     },
     h1: {
-      color: 'text',
-      fontFamily: 'heading',
-      lineHeight: 'heading',
-      fontWeight: 'heading',
+      color: "text",
+      fontFamily: "heading",
+      lineHeight: "heading",
+      fontWeight: "heading",
       fontSize: 5,
     },
     h2: {
-      color: 'text',
-      fontFamily: 'heading',
-      lineHeight: 'heading',
-      fontWeight: 'heading',
+      color: "text",
+      fontFamily: "heading",
+      lineHeight: "heading",
+      fontWeight: "heading",
       fontSize: 4,
     },
     h3: {
-      color: 'text',
-      fontFamily: 'heading',
-      lineHeight: 'heading',
-      fontWeight: 'heading',
+      color: "text",
+      fontFamily: "heading",
+      lineHeight: "heading",
+      fontWeight: "heading",
       fontSize: 3,
     },
     h4: {
-      color: 'text',
-      fontFamily: 'heading',
-      lineHeight: 'heading',
-      fontWeight: 'heading',
+      color: "text",
+      fontFamily: "heading",
+      lineHeight: "heading",
+      fontWeight: "heading",
       fontSize: 2,
     },
     h5: {
-      color: 'text',
-      fontFamily: 'heading',
-      lineHeight: 'heading',
-      fontWeight: 'heading',
+      color: "text",
+      fontFamily: "heading",
+      lineHeight: "heading",
+      fontWeight: "heading",
       fontSize: 1,
     },
     h6: {
-      color: 'text',
-      fontFamily: 'heading',
-      lineHeight: 'heading',
-      fontWeight: 'heading',
+      color: "text",
+      fontFamily: "heading",
+      lineHeight: "heading",
+      fontWeight: "heading",
       fontSize: 0,
     },
     p: {
-      color: 'text',
-      fontFamily: 'body',
-      fontWeight: 'body',
-      lineHeight: 'body',
+      color: "text",
+      fontFamily: "body",
+      fontWeight: "body",
+      lineHeight: "body",
     },
     a: {
-      color: 'text',
+      color: "text",
     },
     pre: {
-      fontFamily: 'monospace',
-      overflowX: 'auto',
+      fontFamily: "monospace",
+      overflowX: "auto",
       code: {
-        color: 'inherit',
+        color: "inherit",
       },
     },
     code: {
-      fontFamily: 'monospace',
-      fontSize: 'inherit',
+      fontFamily: "monospace",
+      fontSize: "inherit",
     },
     table: {
-      width: '100%',
-      borderCollapse: 'separate',
+      width: "100%",
+      borderCollapse: "separate",
       borderSpacing: 0,
     },
     th: {
-      textAlign: 'left',
-      borderBottomStyle: 'solid',
+      textAlign: "left",
+      borderBottomStyle: "solid",
     },
     td: {
-      textAlign: 'left',
-      borderBottomStyle: 'solid',
+      textAlign: "left",
+      borderBottomStyle: "solid",
     },
     img: {
-      maxWidth: '100%',
+      maxWidth: "100%",
     },
     ol: {
-      listStyleType: 'none',
+      listStyleType: "none",
       p: 0,
       m: 0,
     },
     ul: {
-      listStyleType: 'none',
+      listStyleType: "none",
       p: 0,
       m: 0,
     },
   },
-})
+});
 
-export default theme
+export default theme;
