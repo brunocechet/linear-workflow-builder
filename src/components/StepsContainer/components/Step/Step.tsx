@@ -1,5 +1,12 @@
-import React from 'react'
-import styled from '@emotion/styled'
+import React from "react";
+import styled from "@emotion/styled";
+import { Box } from "theme-ui";
+
+import {
+  Draggable,
+  DraggableProvided,
+  DraggableStateSnapshot,
+} from "react-beautiful-dnd";
 
 import {
   BackgroundColorProps,
@@ -10,30 +17,18 @@ import {
   color,
   shadow,
   space,
-  variant,
-} from 'styled-system'
+} from "styled-system";
 
-import { Box } from 'theme-ui'
+import Title from "./components/Title";
+import Description from "./components/Description";
+import theme from "../../../../theme";
 
-import Title from './components/Title'
-import Description from './components/Description'
-import theme from '../../../../theme'
+const getBorderColor = (isDragging: boolean) => isDragging ? theme.colors.accent : theme.colors.white;
 
-type StepState = 'normal' | 'active' | 'hover'
-
-export type StepProps = {
-  state?: StepState
-  title: string
-  description: string
-} & BackgroundColorProps &
-  BorderProps &
-  ShadowProps &
-  SpaceProps &
-  React.HTMLAttributes<HTMLLIElement>
-
-const StepBase = styled.li<Omit<StepProps, 'title' | 'description'>>`
+const StepInnerContainer = styled.li<IStepInnerContainer>`
   align-items: flex-start;
-  border: 2px solid;
+  background-color: ${theme.colors.white};
+  border: ${(props) => `2px solid ${getBorderColor(props.isDragging)}`};
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -44,73 +39,78 @@ const StepBase = styled.li<Omit<StepProps, 'title' | 'description'>>`
     content: "\u25CF \u25CF \u25CF \u25CF \u25CF \u25CF \u25CF \u25CF \u25CF \u25CF \u25CF \u25CF";
     align-items: center;
     box-sizing: border-box;
+    color: ${theme.colors.icon};
     display: flex;
     font-family: monospace;
     font-size: 0.4rem;
+    height: 100%;
     left: 0;
     padding: 0.3rem;
     position: absolute;
     width: 1.4rem;
-    color: ${theme.colors.icon};
-    height: 100%;
   }
 
   &:not(:last-child)::after {
-    content: '';
+    content: "";
     border: 1px solid ${theme.colors.icon};
     bottom: -${theme.space[5] + 2}px;
     box-sizing: border-box;
     height: ${theme.space[5]}px;
     left: calc(50% - 2px);
     position: absolute;
-    width: 1px;
     transform: matrix(1, 0, -0.01, 1, 0, 0);
+    width: 1px;
+  }
+
+  &:hover {
+    border-color: ${theme.colors.icon};
+    &::before {
+      color: ${theme.colors.white};
+      background-color: ${theme.colors.icon};
+    },
   }
 
   ${color}
   ${shadow}
   ${border}
   ${space}
+`;
 
-  ${variant({
-    prop: 'state',
-    variants: {
-      normal: {
-        borderColor: 'white',
-      },
-      hover: {
-        borderColor: 'icon',
-        '::before': {
-          color: 'white',
-          backgroundColor: 'icon',
-        },
-      },
-      active: {
-        borderColor: 'active',
-      },
-    },
-  })}
-`
+const Step: React.FC<IStep> = ({ id, title, description, index }) => (
+  <Draggable key={id} draggableId={id} index={index}>
+    {(provided: DraggableProvided, dragSnapshot: DraggableStateSnapshot) => (
+      <StepInnerContainer
+        borderRadius={3}
+        boxShadow="medium"
+        my={5}
+        p={4}
+        ref={provided.innerRef}
+        isDragging={dragSnapshot.isDragging}
+        {...provided.draggableProps}
+        {...provided.dragHandleProps}
+      >
+        <Box ml={2}>
+          <Title>{title}</Title>
+          <Description>{description}</Description>
+        </Box>
+      </StepInnerContainer>
+    )}
+  </Draggable>
+);
 
-const Step: React.FC<StepProps> = ({ state, title, description, ...rest }) => (
-  <StepBase
-    state={state}
-    bg="white"
-    borderRadius={1}
-    boxShadow="medium"
-    my={5}
-    p={4}
-    {...rest}
-  >
-    <Box ml={2}>
-      <Title>{title}</Title>
-      <Description>{description}</Description>
-    </Box>
-  </StepBase>
-)
-
-Step.defaultProps = {
-  state: 'normal' as StepState,
+interface IStepInnerContainer
+  extends BackgroundColorProps,
+    BorderProps,
+    ShadowProps,
+    SpaceProps {
+  isDragging: boolean;
 }
 
-export default Step
+export interface IStep {
+  id: string;
+  title: string;
+  description: string;
+  index: number;
+}
+
+export default Step;

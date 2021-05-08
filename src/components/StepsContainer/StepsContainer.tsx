@@ -1,28 +1,52 @@
-import React from 'react'
-import styled from '@emotion/styled'
-import { space, SpaceProps } from 'styled-system'
-import Step, { StepProps } from './components/Step'
+import React from "react";
+import styled from "@emotion/styled";
+import { space, SpaceProps } from "styled-system";
 
-type StepsContainerProps = { steps: StepProps[] } & SpaceProps &
-  React.HTMLAttributes<HTMLOListElement>
+import {
+  Droppable,
+  DroppableProvided,
+  DroppableProvidedProps,
+} from "react-beautiful-dnd";
 
-const StepsContainerBase = styled.ol<Omit<StepsContainerProps, 'steps'>>`
+import Step, { IStep } from "./components/Step";
+
+const StepsContainerBase = styled.ul<IStepsContainerBase>`
   list-style: none;
   padding: 0;
   margin: 0;
   ${space};
-`
+`;
 
-const StepsContainer: React.FC<StepsContainerProps> = ({ steps }) => (
-  <StepsContainerBase>
-    {steps.map((stepValue) => (
-      <Step
-        description={stepValue.description}
-        key={stepValue.title}
-        title={stepValue.title}
-      />
-    ))}
-  </StepsContainerBase>
-)
+const StepsContainer: React.FC<IStepsContainer> = ({ steps }) => (
+  <Droppable droppableId="workflow">
+    {(provided: DroppableProvided) => (
+      <>
+        <StepsContainerBase
+          {...provided.droppableProps}
+          ref={provided.innerRef}
+        >
+          {steps.map(({ id, title, description }, index) => {
+            return (
+              <Step
+                key={id}
+                description={description}
+                id={id}
+                index={index}
+                title={title}
+              />
+            );
+          })}
+        </StepsContainerBase>
+        {provided.placeholder}
+      </>
+    )}
+  </Droppable>
+);
 
-export default StepsContainer
+interface IStepsContainer extends React.HTMLAttributes<HTMLUListElement> {
+  steps: IStep[];
+}
+
+interface IStepsContainerBase extends SpaceProps, DroppableProvidedProps {}
+
+export default StepsContainer;
