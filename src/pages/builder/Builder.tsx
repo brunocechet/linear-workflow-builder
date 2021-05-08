@@ -4,6 +4,7 @@ import { nanoid } from "nanoid";
 
 import StepsContainer from "../../components/StepsContainer";
 import TrashBin from "../../components/TrashBin";
+import { extractValueFromEvent } from "./utils";
 
 const TEMP_MOCK = Array(6)
   .fill({})
@@ -42,9 +43,30 @@ const Builder: React.FC = () => {
     setSteps(items);
   };
 
+  const handleCreateNewStep = (
+    event: React.FormEvent<HTMLFormElement>
+  ): void => {
+    const title = extractValueFromEvent(event, "title");
+    const description = extractValueFromEvent(event, "description");
+
+    const maxStepIndex = Math.max(...steps.map((item) => item.index));
+
+    const newStep = {
+      title,
+      description,
+      id: nanoid(),
+      index: maxStepIndex + 1,
+    };
+
+    setSteps((currentSteps) => currentSteps.concat(newStep));
+
+    event.preventDefault();
+    event.currentTarget.reset();
+  };
+
   return (
     <DragDropContext onDragEnd={handleOnDragEnd}>
-      <StepsContainer steps={steps} />
+      <StepsContainer steps={steps} handleCreateNewStep={handleCreateNewStep} />
       <TrashBin />
     </DragDropContext>
   );
