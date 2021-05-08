@@ -23,13 +23,11 @@ import Title from "./components/Title";
 import Description from "./components/Description";
 import theme from "../../../../theme";
 
-const getBorderColor = (isDragging: boolean) =>
-  isDragging ? theme.colors.accent : theme.colors.white;
-
 const StepInnerContainer = styled.li<IStepInnerContainer>`
   align-items: flex-start;
   background-color: ${theme.colors.white};
-  border: ${(props) => `2px solid ${getBorderColor(props.isDragging)}`};
+  border: ${(props) =>
+    `2px solid ${props.isDragging ? theme.colors.accent : theme.colors.white}`};
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -40,7 +38,10 @@ const StepInnerContainer = styled.li<IStepInnerContainer>`
     content: "\u25CF \u25CF \u25CF \u25CF \u25CF \u25CF \u25CF \u25CF \u25CF \u25CF \u25CF \u25CF";
     align-items: center;
     box-sizing: border-box;
-    color: ${theme.colors.icon};
+    color: ${(props) =>
+      props.isDragging ? theme.colors.white : theme.colors.icon};
+    background-color: ${(props) =>
+      props.isDragging ? theme.colors.accent : theme.colors.white};
     display: flex;
     font-family: monospace;
     font-size: 0.4rem;
@@ -53,7 +54,8 @@ const StepInnerContainer = styled.li<IStepInnerContainer>`
 
   &:not(:last-child)::after {
     content: "";
-    border: 1px solid ${theme.colors.icon};
+    border: 1px solid ${(props) =>
+      props.isDragging ? "transparent" : theme.colors.icon};
     bottom: -${theme.space[5] + 2}px;
     box-sizing: border-box;
     height: ${theme.space[5]}px;
