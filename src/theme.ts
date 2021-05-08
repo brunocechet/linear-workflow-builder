@@ -32,14 +32,29 @@ const theme = makeTheme({
     text: "#21272A",
     white: "#FFFFFF",
   },
-  sizes: {
+  layout: {
     container: {
       maxWidth: 1280, // just an example related to how define max width directly on theme for a container
       padding: 4, // maps to space index 4, which is 16 (pixels)
     },
   },
+  sizes: {
+    container: {
+      maxWidth: 1280
+    },
+    footer: {
+      maxWidth: 1280,
+      maxHeight: 300,
+    }
+  },
+  images: {
+    small: {
+      height: 150,
+      borderRadius: 3,
+    },
+  },
   radii: {
-    borderRadius: 1,
+    borderRadius: 3,
   },
   shadows: {
     medium: "0 8px 32px rgba(0, 0, 0, .16)",

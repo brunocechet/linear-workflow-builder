@@ -3,6 +3,7 @@ import { DragDropContext, DropResult } from "react-beautiful-dnd";
 import { nanoid } from "nanoid";
 
 import StepsContainer from "../../components/StepsContainer";
+import TrashBin from "../../components/TrashBin";
 
 const TEMP_MOCK = Array(6)
   .fill({})
@@ -25,14 +26,18 @@ const Builder: React.FC = () => {
       return;
     }
 
-    // same position
-    if (result.destination.index === result.source.index) {
-      return;
-    }
-
     const items = Array.from(steps);
     const [reorderedItem] = items.splice(result.source.index, 1);
-    items.splice(result.destination.index, 0, reorderedItem);
+
+    // when dropping to trash, we dont need to reinsert this item
+    if (result.destination.droppableId !== "trash") {
+      // same position
+      if (result.destination.index === result.source.index) {
+        return;
+      }
+
+      items.splice(result.destination.index, 0, reorderedItem);
+    }
 
     setSteps(items);
   };
@@ -40,6 +45,7 @@ const Builder: React.FC = () => {
   return (
     <DragDropContext onDragEnd={handleOnDragEnd}>
       <StepsContainer steps={steps} />
+      <TrashBin />
     </DragDropContext>
   );
 };
