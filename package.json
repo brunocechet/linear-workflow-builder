@@ -59,6 +59,7 @@
     "eslint-config-react-app": "^6.0.0",
     "eslint-plugin-import": "^2.22.0",
     "eslint-plugin-react": "^7.20.3",
-    "eslint-plugin-react-hooks": "^4.0.8"
+    "eslint-plugin-react-hooks": "^4.0.8",
+    "eslint-plugin-testing-library": "^4.2.1"
   }
 }
