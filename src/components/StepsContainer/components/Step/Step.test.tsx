@@ -7,7 +7,7 @@ import Step from "./index";
 const handleOnDragEnd = jest.fn();
 
 describe("Step component", () => {
-  it("Should render the component", () => {
+  it("Should render the component and its children", () => {
     render(
       <DragDropContext onDragEnd={handleOnDragEnd}>
         <Step description="Description" id="1234" title="Title" index={1} />
