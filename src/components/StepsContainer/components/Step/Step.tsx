@@ -89,6 +89,7 @@ const Step: React.FC<IStep> = ({ id, title, description, index }) => (
         p={4}
         ref={provided.innerRef}
         isDragging={dragSnapshot.isDragging}
+        data-testid={`step-${id}`}
         {...provided.draggableProps}
         {...provided.dragHandleProps}
       >
@@ -112,7 +113,7 @@ interface IStepInnerContainer
 export interface IStep {
   id: string;
   title: string;
-  description: string;
+  description?: string;
   index: number;
 }
 
