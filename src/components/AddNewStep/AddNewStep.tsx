@@ -1,32 +1,11 @@
 import React from "react";
-import styled from "@emotion/styled";
 import { Button, Divider, Input, Label, Textarea } from "theme-ui";
 
-import {
-  BackgroundColorProps,
-  BorderProps,
-  ShadowProps,
-  SpaceProps,
-  border,
-  shadow,
-  space,
-} from "styled-system";
+import { AddStepInnerContainer } from './styles'
 
-import theme from "../../theme";
-
-const AddStepInnerContainer = styled.div<IAddStepInnerContainer>`
-  align-items: flex-start;
-  background-color: ${theme.colors.white};
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  position: relative;
-  width: 250px;
-
-  ${shadow}
-  ${border}
-  ${space}
-`;
+export interface IAddNewStep {
+  handleCreateNewStep: (event: React.FormEvent<HTMLFormElement>) => void;
+}
 
 const AddNewStep: React.FC<IAddNewStep> = ({ handleCreateNewStep }) => {
   return (
@@ -55,15 +34,5 @@ const AddNewStep: React.FC<IAddNewStep> = ({ handleCreateNewStep }) => {
     </AddStepInnerContainer>
   );
 };
-
-export interface IAddNewStep {
-  handleCreateNewStep: (event: React.FormEvent<HTMLFormElement>) => void;
-}
-
-interface IAddStepInnerContainer
-  extends BackgroundColorProps,
-    BorderProps,
-    ShadowProps,
-    SpaceProps {}
 
 export default AddNewStep;
