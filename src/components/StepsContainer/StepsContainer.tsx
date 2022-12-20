@@ -1,22 +1,20 @@
 import React from "react";
-import styled from "@emotion/styled";
-import { space, SpaceProps } from "styled-system";
 
 import {
   Droppable,
   DroppableProvided,
-  DroppableProvidedProps,
 } from "react-beautiful-dnd";
 
-import Step, { IStep } from "./components/Step";
 import AddNewStep, { IAddNewStep } from "../AddNewStep";
 
-const StepsContainerBase = styled.ul<IStepsContainerBase>`
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  ${space};
-`;
+import Step, { IStep } from "./components/Step";
+import { StepsContainerBase } from './styles';
+
+interface IStepsContainer
+  extends IAddNewStep,
+  React.HTMLAttributes<HTMLUListElement> {
+  steps: IStep[];
+}
 
 const StepsContainer: React.FC<IStepsContainer> = ({
   steps,
@@ -47,13 +45,5 @@ const StepsContainer: React.FC<IStepsContainer> = ({
     )}
   </Droppable>
 );
-
-interface IStepsContainer
-  extends IAddNewStep,
-    React.HTMLAttributes<HTMLUListElement> {
-  steps: IStep[];
-}
-
-interface IStepsContainerBase extends SpaceProps, DroppableProvidedProps {}
 
 export default StepsContainer;
