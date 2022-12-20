@@ -6,7 +6,7 @@ import styled from "@emotion/styled";
 import DeleteIcon from "./images/delete.png";
 
 const TrashBinContainer = styled(Container)`
-  align-items: flex-end;
+  align-items: center;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -27,12 +27,15 @@ const TrashBin: React.FC = () => (
           ref={provided.innerRef}
           variant="footer"
         >
-          <TrashBinImage
-            src={DeleteIcon}
-            alt="Delete"
-            variant="small"
-            title="Drag an element here to remove it"
-          />
+          <>
+            <span>Drag an element here to remove it</span>
+            <TrashBinImage
+              alt="Recicle bin"
+              src={DeleteIcon}
+              title="Drag an element here to remove it"
+              variant="small"
+            />
+          </>
         </TrashBinContainer>
         {provided.placeholder}
       </>
